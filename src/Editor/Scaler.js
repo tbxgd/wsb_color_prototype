@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from "react";
 
 const paddingOffset = 48;
 
-export default function Scaler({ scale = 0.6, children }) {
+export default function Scaler({ scale = 0.45, children }) {
   const [state, setState] = useState({ height: "100%", width: "100%" });
   const setScale = useCallback(() => {
     const { width, height } = document
@@ -33,7 +33,7 @@ export default function Scaler({ scale = 0.6, children }) {
     width: `${scaleVal}%`,
     height: `${scaleVal}%`,
     transformOrigin: "center top",
-    transition: "transform .2s ease-out",
+    transition: "transform 0.8s ease-out",
     willChange: "transform"
   };
 

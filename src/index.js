@@ -20,7 +20,7 @@ function reducer(zoomLevel, action) {
     case "decrement":
       return zoomLevel - 0.1;
     case "toggle":
-      return zoomLevel === 1 ? 0.5 : 1;
+      return zoomLevel === 1 ? 0.45 : 1;
     default:
       throw new Error();
   }
@@ -85,7 +85,7 @@ const chevronUpIcon = (
 );
 
 const fontIcon = (
-  <svg width={24} height={24}>
+  <svg width={24} height={24} fill="none">
     <path
       fill-rule="evenodd"
       clip-rule="evenodd"
@@ -98,6 +98,17 @@ const fontIcon = (
 const plusIcon = (
   <svg width={24} height={24}>
     <path d="M20 13H13V20H11V13H4V11H11V4H13V11H20V13Z" fill="#ffffff" />
+  </svg>
+);
+
+const infoIcon = (
+  <svg width={24} height={24} fill="none">
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM12 20C7.6 20 4 16.4 4 12C4 7.6 7.6 4 12 4C16.4 4 20 7.6 20 12C20 16.4 16.4 20 12 20ZM13 17.2H11V10.2H13V17.2ZM11 7.5C11 7 11.4 6.5 12 6.5C12.6 6.5 13 7 13 7.5C13 8 12.6 8.5 12 8.5C11.4 8.5 11 8.1 11 7.5Z"
+      fill="#ffffff"
+    />
   </svg>
 );
 
@@ -117,6 +128,17 @@ const addColorBtn = (
       d="M22.6663 16.8333H16.833V22.6667H15.1663V16.8333H9.33301V15.1667H15.1663V9.33334H16.833V15.1667H22.6663V16.8333Z"
       fill="white"
       fill-opacity="0.5"
+    />
+  </svg>
+);
+
+const cameraIcon = (
+  <svg width={24} height={24} fill="none">
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M22 21H2V5.5H7.4L9 3H15L16.6 5.5H22V21ZM4 19H20V7.5H15.5L13.9 5H10L8.4 7.5H4V19ZM12 17.1C9.6 17.1 7.7 15.2 7.7 12.8C7.7 10.4 9.6 8.5 12 8.5C14.4 8.5 16.3 10.4 16.3 12.8C16.3 15.2 14.4 17.1 12 17.1ZM12 10.5C10.7 10.5 9.7 11.5 9.7 12.8C9.7 14.1 10.7 15.1 12 15.1C13.3 15.1 14.3 14.1 14.3 12.8C14.3 11.5 13.3 10.5 12 10.5Z"
+      fill="#ffffff"
     />
   </svg>
 );
@@ -192,32 +214,19 @@ function App() {
         <div className="flex center color-dropdown">
           {colorIcon}
           <div className="pivot-label">
-            <span>Site Color</span>
+            <span>Color Settings</span>
           </div>
           <div className="pivot-chevron">{chevronUpIcon}</div>
         </div>
         <div className="dropdown-content">
           <MutatorSection>
-            <p className="section-label">Paint Your Site</p>
-            <ColorSlider
-              color={primary}
-              scheme={scheme}
-              setScheme={setScheme}
-            />
-          </MutatorSection>
-          <MutatorSection>
-            <p className="section-label">Recommended</p>
-            <p className="color-picker-label">
-              Use a color selected from your logo and images for a better
-              looking site.
-            </p>
+            <p className="section-label">Pick a color</p>
             <ColorPickerCategory
               color={primary}
               colors={recommendedColors}
               isRecommended={isRecommended}
               setColor={setPrimary}
             />
-            <p className="label">Or pick a color you like</p>
             <div
               style={{
                 display: "flex",
@@ -260,6 +269,14 @@ function App() {
               isRecommended={isRecommended}
               color={recentColor || primary}
               setColor={setPrimary}
+            />
+          </MutatorSection>
+          <MutatorSection>
+            <p className="section-label">Site Appearance</p>
+            <ColorSlider
+              color={primary}
+              scheme={scheme}
+              setScheme={setScheme}
             />
           </MutatorSection>
         </div>

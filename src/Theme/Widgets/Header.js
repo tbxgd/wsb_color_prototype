@@ -34,16 +34,16 @@ function NavBar({ setImgColors, logoImg, setLogoImg }) {
       </Heading>
       <Flex>
         <Link href="#" ml={24}>
-          Page 1
+          Home
         </Link>
         <Link href="#" ml={24}>
-          Page 2
+          About Us
         </Link>
         <Link href="#" ml={24}>
-          Page 3
+          Services
         </Link>
         <Link href="#" ml={24}>
-          Page 4
+          Contact
         </Link>
       </Flex>
     </Flex>
